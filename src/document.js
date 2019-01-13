@@ -39,7 +39,7 @@ class Document {
 	 * Returns the content in HTML as a string
 	 */
 	getHTML() {
-		return `<!DOCTYPE html><html>${this.getContentInHTML()}</html>`;
+		return `${this.getContentInHTML()}`;
 	}
 
 	/**
@@ -84,23 +84,27 @@ class Document {
 			if (headTag.content && headTag.content.constructor === Array) {
 				headTag.content.push({
 					type: 'title',
-					content: newTitle,
+					content: newTitle
 				});
 			} else {
-				headTag.content = [{
-					type: 'title',
-					content: newTitle,
-				}];
+				headTag.content = [
+					{
+						type: 'title',
+						content: newTitle
+					}
+				];
 			}
 			return newTitle;
 		}
 		// If we passed to this point, we simply add a new head tag and a title tag
 		this.content.push({
 			type: 'head',
-			content: [{
-				type: 'title',
-				content: newTitle,
-			}],
+			content: [
+				{
+					type: 'title',
+					content: newTitle
+				}
+			]
 		});
 		return newTitle;
 	}
@@ -115,10 +119,10 @@ class Document {
 				type: 'head',
 				content: [
 					{ type: 'meta', attributes: { charset: 'utf-8' } },
-					{ type: 'meta', attributes: { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' } },
-				],
+					{ type: 'meta', attributes: { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' } }
+				]
 			},
-			{ type: 'body', content },
+			{ type: 'body', content }
 		];
 		return this;
 	}
